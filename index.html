@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Numerical Trivia</title>
+	<link rel="stylesheet" href="main.css">
+	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+	<script src="app.js"></script>
+</head>
+<body>
+	<div class="container">
+		<div class="intro">
+			<ul>
+				<li>Enter a number here to learn something new!</li>
+				<li>
+					<form class="numberIn"  onsubmit="return false;">
+					<input id="entry" type="text" placeholder="number" name="numIn" size="5" autofocus required>
+					<input id="button" type="submit" value="Submit" >
+					</form>
+				</li>	
+			</ul>
+		</div>
+		<div class="numPic">	
+		<p></p>	
+		</div>
+		<div class="results-container">
+			<div class="header">
+				<h1>Here's something interesting about the number <span></span> </h1>
+			</div>
+			<div class="results">Insert trivia here</div>
+		</div>
+	</div>
+	<div class="templates hidden">
+		<div class="result question">
+		</div>
+		
+		<div class="error">
+			<p>Uh-oh! Something went wrong with your request. Here's what we know:</p>
+		</div>
+	</div>
+</body>
+</html>
