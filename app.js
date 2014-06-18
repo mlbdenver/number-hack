@@ -1,9 +1,10 @@
 $(document).ready( function() {
+	$('.results-container .header').hide();
 	$('.numberIn').submit( function(event){
 		// zero out results if previous search has run
 		$('.results').html('');
 		$('.header h1 span').html('');
-		// get the value of the tags the user submitted
+		// get the value of the number the user submitted
 		var numIn = $(this).find("input[name='numIn']").val();
 		getTrivia(numIn);
 	});
@@ -24,10 +25,8 @@ var showError = function(error){
 	$('.results').append(errorText);
 };
 
-// takes a string of semi-colon separated tags to be searched
-// for on StackOverflow - Not sure if the type is right
+// submits number to be searched for on Numbers API
 var getTrivia = function(numIn) {
-	// the parameters we need to pass in our request to StackOverflow's API
 	
 	var request = numIn;
 	var result = $.ajax({
@@ -36,12 +35,16 @@ var getTrivia = function(numIn) {
 		type: "GET",
 		})
 	.done(function(result){
+		$('.results-container .header').show();
 		$('.header h1 span').append(numIn);
 		$('.results').append(result);
+		$('#entry').html('');
+
 		})
 	.fail(function(jqXHR, error, errorThrown){
-		var errorElem = showError(error);
-		$('.results').append(errorElem);
+		var errorText = '<p>' + error + '</p>';
+		$('.results').append(errorText);
+		$('#entry').html('');
 	});
 };
 
